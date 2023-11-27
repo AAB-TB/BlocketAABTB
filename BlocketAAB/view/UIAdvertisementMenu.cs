@@ -163,7 +163,8 @@ namespace BlocketAAB.view
             }
             else
             {
-                Console.WriteLine($"Error adding advertisement '{title}'.");
+                Console.WriteLine($"Error adding advertisement '{title}'. Invalid category ID");
+                logger.Error("Category does not exists.");
             }
         }
 

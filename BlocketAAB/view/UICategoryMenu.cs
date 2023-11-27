@@ -139,17 +139,32 @@ namespace BlocketAAB.view
                 }
             }
 
-            bool isDeleted = categoryService.Delete(categoryIdToDelete);
+            // Display a warning message to the user
+            Console.WriteLine("Warning: Deleting a category will also delete all associated advertisements.");
 
-            if (isDeleted)
+            // Ask for confirmation
+            Console.Write("Are you sure you want to delete this category and all its advertisements? (yes/no): ");
+            string confirmation = Console.ReadLine().ToLower();
+
+            if (confirmation == "yes")
             {
-                Console.WriteLine($"Category with ID '{categoryIdToDelete}' deleted successfully.");
+                bool isDeleted = categoryService.Delete(categoryIdToDelete);
+
+                if (isDeleted)
+                {
+                    Console.WriteLine($"Category with ID '{categoryIdToDelete}' and its advertisements deleted successfully.");
+                }
+                else
+                {
+                    Console.WriteLine($"Error deleting category with ID '{categoryIdToDelete}'. Category may not exist.");
+                }
             }
             else
             {
-                Console.WriteLine($"Error deleting category with ID '{categoryIdToDelete}'. Category may not exist.");
+                Console.WriteLine("Deletion canceled. Category and advertisements are not deleted.");
             }
         }
+
         public void DisplayInvalidChoiceMessage()
         {
             Console.WriteLine($"╔════════════════════════════════════════════════════════════════════╗");

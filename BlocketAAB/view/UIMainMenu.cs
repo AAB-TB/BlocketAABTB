@@ -37,6 +37,7 @@ namespace BlocketAAB.view
                 Console.WriteLine($"                                          ╔════════════════════════════════════════════════╗");
                 Console.WriteLine($"                                          ║  Exiting program. Thank you for using Blocket! ║");
                 Console.WriteLine($"                                          ╚════════════════════════════════════════════════╝");
+                Console.ReadKey();
             }
 
             public void DisplayInvalidChoiceMessage()
